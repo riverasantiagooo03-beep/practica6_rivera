@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pràctica 6 - Plantilla Web</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #e9ecef;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: 250px 1fr 200px;
+      grid-template-rows: auto auto auto auto;
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .area-logo    { grid-column: 1; grid-row: 1; }
+    .area-menu    { grid-column: 1; grid-row: 2 / span 2; }
+    .area-header  { grid-column: 2; grid-row: 1; }
+    .area-slider1 { grid-column: 2; grid-row: 2; }
+    .area-noticies { grid-column: 2; grid-row: 3; }
+    .area-slider2 { grid-column: 3; grid-row: 2 / span 2; }
+    .area-footer  { grid-column: 1 / -1; grid-row: 4; }
+
+    .bloc {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .area-header, .area-footer {
+      background-color: #343a40;
+      color: white;
+      min-height: 60px; 
+    }
+
+    .area-logo {
+      padding: 10px;
+    }
+
+    .zdog-canvas {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      max-height: 120px; 
+    }
+
+    .area-menu {
+      padding: 0; 
+      overflow: hidden; 
+    }
+
+    .menu-llista {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%; 
+      display: flex;
+      flex-direction: column;
+      gap: 0; 
+    }
+
+    .menu-llista li {
+      flex: 1; 
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      background-color: #495057; 
+      color: white; 
+      border-bottom: 1px solid #343a40; 
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 1.1rem;
+    }
+
+    .menu-llista li:last-child {
+      border-bottom: none;
+    }
+
+    .menu-llista li:hover {
+      background-color: #343a40;
+    }
+
+    .area-noticies {
+      min-height: 250px; 
+      align-items: stretch; 
+      padding: 20px;
+    }
+
+    .contenidor-noticies {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      height: 100%; 
+    }
+
+    .noticia {
+      flex: 1; 
+      border: 1px solid #ccc;
+      padding: 20px; 
+      border-radius: 8px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; 
+      text-align: left; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    }
+
+    .noticia h3 {
+      margin-top: 0;
+      font-size: 1.2em;
+      color: #343a40;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .noticia p {
+      font-size: 0.95em;
+      color: #555;
+      line-height: 1.5; 
+      margin: 0;
+    }
+
+    .swiper-horizontal-custom {
+      width: 100%;
+      max-width: 900px;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    .swiper-vertical-custom {
+      width: 200px;
+      height: 700px;
+      border-radius: 10px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout-grid">
+
+    <div class="area-logo bloc">
+      <canvas class="zdog-canvas" width="400" height="400"></canvas>
+    </div>
+
+    <div class="area-header bloc">
+      <h1>CAPÇALERA</h1>
+    </div>
+
+    <div class="area-slider1 bloc">
+      <div class="swiper swiper-horizontal-custom mySwiper1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="slider1/slider1/slider_1a.jpg" alt="Imatge A"></div>
+          <div class="swiper-slide"><img src="slider1/slider1/slider_1b.jpg" alt="Imatge B"></div>
+          <div class="swiper-slide"><img src="slider1/slider1/slider_1c.jpg" alt="Imatge C"></div>
+          <div class="swiper-slide"><img src="slider1/slider1/slider_1d.jpg" alt="Imatge D"></div>
+          <div class="swiper-slide"><img src="slider1/slider1/slider_1e.jpg" alt="Imatge E"></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <div class="area-noticies bloc">
+      <div class="contenidor-noticies">
+        <div class="noticia">
+          <h3>Notícia 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="noticia">
+          <h3>Notícia 2</h3>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="area-menu bloc">
+      <ul class="menu-llista">
+        <li>Inici</li>
+        <li>Qui som</li>
+        <li>Serveis</li>
+        <li>Contacte</li>
+        <li>Blog</li>
+      </ul>
+    </div>
+
+    <div class="area-slider2 bloc">
+      <div class="swiper swiper-vertical-custom mySwiper2">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="slider2/slider2/slider_2a.jpg" alt="Imatge 2A"></div>
+          <div class="swiper-slide"><img src="slider2/slider2/slider_2b.jpg" alt="Imatge 2B"></div>
+          <div class="swiper-slide"><img src="slider2/slider2/slider_2c.jpg" alt="Imatge 2C"></div>
+          <div class="swiper-slide"><img src="slider2/slider2/slider_2d.jpg" alt="Imatge 2D"></div>
+          <div class="swiper-slide"><img src="slider2/slider2/slider_2e.jpg" alt="Imatge 2E"></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <div class="area-footer bloc">
+      <p>PEU DE PÀGINA - © 2024</p>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+
+  <script>
+    const swiper1 = new Swiper('.mySwiper1', {
+      direction: 'horizontal',
+      loop: true,
+      speed: 600,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pagination: { el: '.mySwiper1 .swiper-pagination', clickable: true },
+      navigation: { nextEl: '.mySwiper1 .swiper-button-next', prevEl: '.mySwiper1 .swiper-button-prev' },
+    });
+
+    const swiper2 = new Swiper('.mySwiper2', {
+      direction: 'vertical',
+      effect: 'fade',
+      loop: true,
+      speed: 600,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      fadeEffect: { crossFade: true },
+      pagination: { el: '.mySwiper2 .swiper-pagination', clickable: true },
+      navigation: { nextEl: '.mySwiper2 .swiper-button-next', prevEl: '.mySwiper2 .swiper-button-prev' },
+    });
+  </script>
+
+  <script>
+    let illo = new Zdog.Illustration({
+      element: '.zdog-canvas',
+      zoom: 2.5,
+      dragRotate: true,
+    });
+
+    let nucli = new Zdog.Group({ addTo: illo });
+
+    new Zdog.Shape({
+      addTo: nucli,
+      path: [
+        { x: -12, y: 14 }, { x: 0, y: 14 }, { x: 0, y: 0 },
+        { x: -12, y: 0 }, { x: -12, y: -14 }, { x: 0, y: -14 },
+      ],
+      closed: false, stroke: 7, color: '#3E9B4F', translate: { x: -24, y: 0 },
+    });
+
+    new Zdog.Shape({
+      addTo: nucli,
+      path: [
+        { x: -10, y: -14 }, { x: -4, y: 14 }, { x: 2, y: -8 },
+        { x: 8, y: 14 }, { x: 14, y: -14 },
+      ],
+      closed: false, stroke: 8, color: '#1E5AA8', translate: { x: 0, y: 0 },
+    });
+
+    new Zdog.Shape({
+      addTo: nucli,
+      path: [ { x: 10, y: 14 }, { x: 17, y: -14 }, { x: 24, y: 14 } ],
+      closed: false, stroke: 8, color: '#8B0000', translate: { x: 24, y: 0 },
+    });
+
+    new Zdog.Shape({
+      addTo: nucli,
+      path: [ { x: 12, y: 3 }, { x: 22, y: 3 } ],
+      closed: false, stroke: 6, color: '#8B0000', translate: { x: 24, y: 0 },
+    });
+
+    let estrella = new Zdog.Shape({
+      addTo: nucli,
+      path: [
+        { x: 0, y: -7 }, { x: 2.5, y: -2.5 }, { x: 7, y: -2.5 }, { x: 3.5, y: 1 }, { x: 4.5, y: 6 },
+        { x: 0, y: 3 }, { x: -4.5, y: 6 }, { x: -3.5, y: 1 }, { x: -7, y: -2.5 }, { x: -2.5, y: -2.5 },
+      ],
+      closed: true, fill: true, stroke: 0, color: '#F6C90E', translate: { x: 41, y: -24, z: 0 },
+    });
+
+    let anellsGrup = new Zdog.Group({ addTo: illo });
+
+    let anellBlau = new Zdog.Ellipse({ addTo: anellsGrup, diameter: 90, stroke: 8, color: '#1E5AA8' });
+    let anellVerd = new Zdog.Ellipse({ addTo: anellsGrup, diameter: 120, stroke: 9, color: '#3E9B4F' });
+    let anellGroc = new Zdog.Ellipse({ addTo: anellsGrup, diameter: 150, stroke: 10, color: '#F6C90E' });
+
+    let t = 0;
+    function animate() {
+      t += 0.02;
+      anellGroc.rotate.x = Zdog.TAU / 4 + t * 0.4;      
+      anellGroc.rotate.y = t * 0.6;
+      anellVerd.rotate.x = Zdog.TAU / 5 + t * 0.6;      
+      anellVerd.rotate.y = t * 0.9;
+      anellBlau.rotate.x = Zdog.TAU / 7 + t * 0.8;      
+      anellBlau.rotate.y = t * 1.2;
+      estrella.rotate.y -= 0.05; 
+      illo.updateRenderGraph();
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+</body>
+</html>
